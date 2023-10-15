@@ -1,6 +1,6 @@
 def addcourse():
     while True:
-        print('輸入課程:')
+        print('輸入課程')
         name=input('class name or "c" to cancel:')
         if name=='c':
             print('結束')
@@ -47,8 +47,27 @@ def choicecourse():
                     if check1==students[i]['id'] and check2==courses[a]['id']:
                         students[i]['schdule'].append(courses[a]['name'])
                         courses[a]['coursestudent'].append(students[i]['name'])
-                        print( f"該名學生課表:{students[i]['schdule']}")
-                        print( f"該課程所有學生:{courses[a]['coursestudent']}")
+                        print( f"更新該名學生課表:{students[i]['schdule']}")
+                        print( f"更新該課程所有學生:{courses[a]['coursestudent']}")
+
+def delclass():
+    while True:
+        print('開始刪除課程')
+        a=input('輸入學號或輸入c取消')
+        if a=='c':
+            print('取消')
+            break
+        else:
+            b=input('請輸入想要刪除的課程')
+            for i in range(len(students)):
+                for z in range(len(courses)):
+                    if a==students[i]['id'] and b==courses[z]['id']:
+                        students[i]['schdule'].remove(courses[z]['name'])
+                        courses[z]['coursestudent'].remove(students[i]['name'])
+                        print( f"刪除後該名學生課表:{students[i]['schdule']}")
+                        print( f"刪除後該課程所有學生:{courses[z]['coursestudent']}")
+
+
 
 
 def classstudent():
@@ -76,6 +95,19 @@ print('請先建立課程')
 addcourse()
 print('請先輸入學生資料')
 addstudent()
-choicecourse()
-classstudent()
-studentlist()
+while True:
+    x=input('輸入1學生選課\n輸入2學生退選\n輸入3查詢課程名單\n輸入4查看學生課表')
+    if x=='1':
+        choicecourse()
+
+    elif x=='2':
+        delclass()
+
+    elif x=='3':
+        classstudent()
+
+    elif x =='4':
+        studentlist()
+
+    else:
+        print('關閉系統')
