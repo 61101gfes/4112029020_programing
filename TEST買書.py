@@ -1,7 +1,7 @@
 inventory={}
 buy={}
 def book():
-  inventory['a']={'remain':5,'price':100,'id':1}
+  inventory['a']={'remain':5,'price':100,'id':1}  #如果inventory=[] 則 inventory=[{'name':'a'  , 'remain':5 , 'price':100 , 'id':1},...]
   inventory['b']={'remain':10,'price':500,'id':2}
   inventory['c']={'remain':15,'price':120,'id':3}
   inventory['d']={'remain':20,'price':500,'id':4}
