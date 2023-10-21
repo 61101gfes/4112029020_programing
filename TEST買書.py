@@ -26,11 +26,14 @@ def addbook():
             print(inventory)  
 
 def purchase():
+  buy.clear()
   while True:
+    found=False
     name=input('name or id')
     if name =='end':
       break
     else:
+      
       for key,value in inventory.items():
         if name==str(value['id']) or name==key:
           quantity=int(input('how many'))
@@ -38,9 +41,13 @@ def purchase():
             print('不夠')
             continue
           else:
+            found=True
             buy[key]={'name':key, 'price':value['price'], 'quantity':quantity}
             value['remain']-=quantity
             print(buy)
+    if not found:
+        print('找不到')
+           
 
 def total():
   sum=0
